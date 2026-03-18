@@ -1,3 +1,16 @@
+import Navbar from "@/packages/shared/common/navbar/Navbar";
+import {
+  madaniThin,
+  madaniExtraLight,
+  madaniLight,
+  madaniRegular,
+  madaniMedium,
+  madaniSemiBold,
+  madaniBold,
+  madaniExtraBold,
+  madaniBlack,
+} from "@/packages/shared/themes/fonts";
+
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -11,9 +24,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fontVariables = [
+    madaniThin.variable,
+    madaniExtraLight.variable,
+    madaniLight.variable,
+    madaniRegular.variable,
+    madaniMedium.variable,
+    madaniSemiBold.variable,
+    madaniBold.variable,
+    madaniExtraBold.variable,
+    madaniBlack.variable,
+  ].join(" ");
+
   return (
-    <html lang="en">
+    <html lang="en" className={fontVariables}>
       <body>
+        <Navbar />
         {children}
       </body>
     </html>
