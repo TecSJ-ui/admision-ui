@@ -1,5 +1,6 @@
+import ButtonAppBar from "../packages/shared/common/navbar/Navbar";
+
 import type { Metadata } from "next";
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: 0, padding: 0 }}>
+        <ButtonAppBar />
         {children}
       </body>
     </html>
