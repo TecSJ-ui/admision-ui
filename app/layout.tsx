@@ -1,3 +1,4 @@
+import { Footer } from "@/packages/shared/common";
 import Navbar from "@/packages/shared/common/navbar/Navbar";
 import {
   madaniThin,
@@ -12,7 +13,6 @@ import {
 } from "@/packages/shared/themes/fonts";
 
 import type { Metadata } from "next";
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -38,9 +38,10 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={fontVariables}>
-      <body>
+      <body style={{ margin: 0 }}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
