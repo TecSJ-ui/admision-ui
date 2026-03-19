@@ -38,7 +38,12 @@ export default function CarreraCard({
         <Typography variant="h6" fontWeight="bold" mb={1}>
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" mb={2}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          mb={2}
+          sx={{ minHeight: "4.5rem" }}
+        >
           {text}
         </Typography>
         <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 2 }}>
@@ -126,7 +131,7 @@ export default function CarreraCard({
                 color="primary"
                 sx={{ cursor: "pointer", textDecoration: "underline" }}
               >
-                Descargar plan de estudios (PDF)
+                Folleto (PDF)
               </Typography>
             </Box>
           </AccordionDetails>

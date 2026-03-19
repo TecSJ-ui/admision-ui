@@ -1,4 +1,16 @@
-import ButtonAppBar from "../packages/shared/common/navbar/Navbar";
+import { Footer } from "@/packages/shared/common";
+import Navbar from "@/packages/shared/common/navbar/Navbar";
+import {
+  madaniThin,
+  madaniExtraLight,
+  madaniLight,
+  madaniRegular,
+  madaniMedium,
+  madaniSemiBold,
+  madaniBold,
+  madaniExtraBold,
+  madaniBlack,
+} from "@/packages/shared/themes/fonts";
 
 import type { Metadata } from "next";
 
@@ -12,11 +24,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fontVariables = [
+    madaniThin.variable,
+    madaniExtraLight.variable,
+    madaniLight.variable,
+    madaniRegular.variable,
+    madaniMedium.variable,
+    madaniSemiBold.variable,
+    madaniBold.variable,
+    madaniExtraBold.variable,
+    madaniBlack.variable,
+  ].join(" ");
+
   return (
-    <html lang="en">
-      <body style={{ margin: 0, padding: 0 }}>
-        <ButtonAppBar />
+    <html lang="en" className={fontVariables}>
+      <body style={{ margin: 0 }}>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

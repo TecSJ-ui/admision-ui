@@ -46,7 +46,6 @@ export default function PreguntasCard({
 }: PreguntasCardProps) {
   return (
     <Box sx={{ py: 6 }}>
-      {/* Título */}
       <Typography
         variant="h5"
         fontWeight="bold"
@@ -74,7 +73,7 @@ export default function PreguntasCard({
                   {faq.question}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails sx={{ minHeight: 72 }}>
                 <Typography variant="body2" color="text.secondary">
                   {faq.answer}
                 </Typography>

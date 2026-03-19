@@ -12,7 +12,6 @@ import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOu
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
@@ -43,41 +42,42 @@ export default function Page() {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         />
-        <Container
-          maxWidth="xl"
-          disableGutters
+        <Box
           sx={{
-            px: 5,
             position: "absolute",
             inset: 0,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            px: 3,
             color: "white",
           }}
         >
-          <Typography variant="h2" fontWeight="bold" mb={2}>
-            Admisiones 2026
-          </Typography>
-          <Typography variant="body1" mb={4} sx={{ maxWidth: 500 }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-          </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              backgroundColor: "white",
-              color: "black",
-              width: "fit-content",
-              "&:hover": { backgroundColor: "grey.200" },
-            }}
-          >
-            Registrarse como Aspirante
-          </Button>
-        </Container>
+          <Container maxWidth="xl" disableGutters sx={{ px: 3 }}>
+            <Typography variant="h2" fontWeight="bold" mb={2}>
+              Admisiones 2026
+            </Typography>
+            <Typography variant="body1" mb={4} sx={{ maxWidth: 500 }}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </Typography>
+            <Button
+              variant="contained"
+              size="large"
+              href="/admision"
+              sx={{
+                backgroundColor: "white",
+                color: "black",
+                width: "fit-content",
+                "&:hover": { backgroundColor: "grey.200" },
+              }}
+            >
+              Registrarse como Aspirante
+            </Button>
+          </Container>
+        </Box>
       </Box>
 
       <Container maxWidth="xl" disableGutters sx={{ px: 3 }}>
@@ -127,7 +127,7 @@ export default function Page() {
 
         <PreguntasCard />
 
-        <Box sx={{ py: 8 }}>
+        <Box sx={{ py: 4, pb: 2 }}>
           <Typography variant="h3" fontWeight="bold" mb={2} textAlign="center">
             Oferta educativa
           </Typography>
@@ -154,10 +154,10 @@ export default function Page() {
             <Grid container spacing={3}>
               <Grid size={{ xs: 12, md: 4 }}>
                 <CarreraCard
-                  title="Medicina"
+                  title="Licenciatura en Gastronomía"
                   text="Forma parte de la nueva generación de profesionales de la salud."
                   modalidad="Presencial"
-                  turno="Matutino"
+                  turno="Matutino / Vespertino"
                   unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
                   expanded={openCard === "presencial-0"}
                   onExpandChange={(_, isExpanded) =>
@@ -167,10 +167,10 @@ export default function Page() {
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
                 <CarreraCard
-                  title="Derecho"
+                  title="Arquitectura"
                   text="Defiende la justicia y el estado de derecho."
                   modalidad="Presencial"
-                  turno="Vespertino"
+                  turno="Matutino"
                   unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
                   expanded={openCard === "presencial-1"}
                   onExpandChange={(_, isExpanded) =>
@@ -180,7 +180,7 @@ export default function Page() {
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
                 <CarreraCard
-                  title="Arquitectura"
+                  title="Licenciatura en Administración"
                   text="Diseña los espacios del futuro."
                   modalidad="Presencial"
                   turno="Matutino"
@@ -208,7 +208,7 @@ export default function Page() {
               <Grid size={{ xs: 12, md: 4 }}>
                 <CarreraCard
                   title="Ingeniería en Software"
-                  text="Desarrolla soluciones tecnológicas de vanguardia."
+                  text="Desarrolla soluciones tecnológicas de vanguardia.Desarrolla soluciones tecnológicas de vanguardia.Desarrolla soluciones tecnológicas de vanguardia."
                   modalidad="En línea"
                   turno="Flexible"
                   unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
@@ -234,7 +234,7 @@ export default function Page() {
               <Grid size={{ xs: 12, md: 4 }}>
                 <CarreraCard
                   title="Administración de Empresas"
-                  text="Gestiona organizaciones con visión global."
+                  text="Gestiona organizaciones con visión global.Gestiona organizaciones con visión global.Gestiona organizaciones "
                   modalidad="En línea"
                   turno="Flexible"
                   unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
@@ -287,7 +287,8 @@ export default function Page() {
               <Grid size={{ xs: 12, md: 4 }}>
                 <CarreraCard
                   title="Maestría en Derecho Corporativooo"
-                  text="Especialízate en el ámbito jurídico empresarial."
+                  text="Especialízate en el ámbito jurídico empresarial. Especialízate en el ámbito jurídico empresarial.
+                  Especialízate en el ámbito jurídico empresarial."
                   modalidad="Presencial"
                   turno="Vespertino"
                   unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
@@ -305,7 +306,7 @@ export default function Page() {
                 {
                   question: "¿PUEDO CAMBIAR DE CARRERA UNA VEZ INSCRITO?",
                   answer:
-                    "Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.",
+                    "Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.",
                 },
                 {
                   question:
@@ -329,15 +330,10 @@ export default function Page() {
           </Box>
         </Box>
 
-        <Box sx={{ py: 8 }}>
+        <Box sx={{ py: 8, pt: 2 }}>
           <Typography variant="h3" fontWeight="bold" mb={2} textAlign="center">
             ¿Tienes dudas? Contáctanos
           </Typography>
-          <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
-            <Divider
-              sx={{ width: 60, borderWidth: 3, borderColor: "text.primary" }}
-            />
-          </Box>
           <Typography
             variant="body1"
             color="text.secondary"
