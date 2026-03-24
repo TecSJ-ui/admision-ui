@@ -2,18 +2,7 @@
 import { Box, Typography, Container, Button, Chip } from "@mui/material";
 import Image from "next/image";
 
-type HeroProps = {
-  title: string;
-  subtitle?: string;
-
-  image: string;
-
-  chipLabel?: string;
-  buttonText?: string;
-  buttonHref?: string;
-
-  overlay?: boolean;
-};
+import type { HeroProps } from "../types/Hero";
 
 export default function Hero({
   title,
@@ -26,7 +15,6 @@ export default function Hero({
 }: HeroProps) {
   return (
     <Box sx={{ position: "relative", width: "100%" }}>
-      {/* Imagen */}
       <Image
         src={image}
         alt="Hero image"
@@ -40,7 +28,6 @@ export default function Hero({
         }}
       />
 
-      {/* Overlay opcional */}
       {overlay && (
         <Box
           sx={{
@@ -52,7 +39,6 @@ export default function Hero({
         />
       )}
 
-      {/* Contenido */}
       <Box
         sx={{
           position: "absolute",
@@ -63,7 +49,6 @@ export default function Hero({
         }}
       >
         <Container maxWidth="xl" disableGutters sx={{ px: 3 }}>
-          {/* Chip opcional */}
           {chipLabel && (
             <Chip
               label={chipLabel}
@@ -76,19 +61,16 @@ export default function Hero({
             />
           )}
 
-          {/* Title */}
           <Typography variant="h2" fontWeight="bold" mb={2}>
             {title}
           </Typography>
 
-          {/* Subtitle */}
           {subtitle && (
             <Typography variant="body1" mb={4} sx={{ maxWidth: 500 }}>
               {subtitle}
             </Typography>
           )}
 
-          {/* Button opcional */}
           {buttonText && (
             <Button
               variant="contained"

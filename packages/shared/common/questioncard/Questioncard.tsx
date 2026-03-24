@@ -130,7 +130,6 @@ export default function QuestionCard({ question, index, total }: Props) {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-        {/* ICONO */}
         <Box
           sx={{
             width: 56,
@@ -144,19 +143,22 @@ export default function QuestionCard({ question, index, total }: Props) {
           }}
         >
           {question.icon ? (
-            <Box sx={{ color: "#3B82F6", fontSize: 28 }}>{question.icon}</Box>
+            <Box sx={{ color: "#3B82F6", fontSize: 28, lineHeight: 0 }}>
+              {question.icon}
+            </Box>
           ) : (
             <HelpOutlineIcon sx={{ color: "#3B82F6", fontSize: 28 }} />
           )}
         </Box>
 
-        {/* TEXTO */}
         <Box>
           <Typography variant="caption" color="text.secondary">
             Pregunta {index + 1} de {total}
           </Typography>
 
-          <Typography variant="h6">{question.title}</Typography>
+          <Typography variant="h6" fontWeight="bold">
+            {question.title}
+          </Typography>
         </Box>
       </Box>
       {renderComponents()}

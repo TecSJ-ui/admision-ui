@@ -1,5 +1,6 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
+import "@/app/globals.css";
 import { Footer, Navbar } from "@/packages/shared/common";
 import {
   madaniThin,

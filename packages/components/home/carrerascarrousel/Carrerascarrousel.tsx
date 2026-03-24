@@ -3,9 +3,7 @@
 import Box from "@mui/material/Box";
 import { useState } from "react";
 
-import CarreraCard, {
-  type CarreraCardProps,
-} from "@/packages/components/home/carrerascard/carrerascard";
+import { CarreraCard, type CarreraCardProps } from "@/packages/components";
 
 interface CarreraCarouselProps {
   cards: Omit<CarreraCardProps, "expanded" | "onExpandChange">[];

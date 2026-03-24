@@ -11,7 +11,7 @@ import {
   StarRate,
 } from "@mui/icons-material";
 
-import type { Question } from "@/app/(site)/types/Question";
+import type { Question } from "@/packages/shared/common/types/question";
 
 export const questions: Question[] = [
   {
