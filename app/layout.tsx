@@ -1,4 +1,5 @@
 import { Footer } from "@/packages/shared/common";
+import "./globals.css";
 import Navbar from "@/packages/shared/common/navbar/Navbar";
 import {
   madaniThin,

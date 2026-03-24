@@ -1,84 +1,199 @@
 "use client";
-
-import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
-import ComputerOutlinedIcon from "@mui/icons-material/ComputerOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
-import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
-import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
+import {
+  CampaignOutlined,
+  ComputerOutlined,
+  EmailOutlined,
+  FactCheckOutlined,
+  HowToRegOutlined,
+  LocalPhoneOutlined,
+  SchoolOutlined,
+  WhatsApp,
+  WorkspacePremiumOutlined,
+} from "@mui/icons-material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
 import { useState } from "react";
 
-import CarreraCard from "@/packages/components/home/carrerascard/carrerascard";
+import CarreraCarousel from "@/packages/components/home/carrerascarrousel/Carrerascarrousel";
+import CategoryTabs from "@/packages/components/home/categorytab/categorytab";
 import PreguntasCard from "@/packages/components/home/preguntascard/preguntascard";
 import InfoCard from "@/packages/shared/common/card/Genericcard";
+import Hero from "@/packages/shared/common/hero/Hero";
 
 export default function Page() {
-  const [openCard, setOpenCard] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("Todos");
+
+  const carrerasPresenciales = [
+    {
+      title: "Licenciatura en Gastronomía",
+      text: "Forma parte de la nueva generación de profesionales de la salud forma parte de la nueva",
+      modalidad: "Presencial" as const,
+      turno: "Matutino / Vespertino",
+      unidades: [
+        "Arandas",
+        "Zapopan",
+        "Puerto Vallarta",
+        "Tomatlán",
+        "Chapala",
+      ],
+      image: "/assets/resources/lic-gastronomia.webp",
+    },
+    {
+      title: "Ingeniería en Sistemas Computacionales",
+      text: "Defiende la justicia y el estado de derecho.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino/Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-sist-computacionales.png",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Diseña los espacios del futuro.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino/Vespertino",
+      unidades: ["Arandas", "Zapopan", "Puerto Vallarta", "Tomatlán"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Diseña los espacios del futuro.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino/Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Diseña los espacios del futuro.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino/Vespertino",
+      unidades: ["Puerto Vallarta", "Arandas", "Zapopan", "Tomatlán"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Diseña los espacios del futuro.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino/Vespertino",
+      unidades: ["Puerto Vallarta", "Arandas", "Zapopan", "Tomatlán"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+  ];
+
+  const carrerasEnLinea = [
+    {
+      title: "Ingeniería en Sistemas Computacionales",
+      text: "Desarrolla soluciones tecnológicas de vanguardia.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-sist-computacionales.png",
+    },
+    {
+      title: "Ingeniería en Gestión Empresarial",
+      text: "Crea experiencias visuales para el mundo digital.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/lic-gestion-empresarial.png",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Gestiona organizaciones con visión global.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Gestiona organizaciones con visión global.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Gestiona organizaciones con visión global.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+    {
+      title: "Ingeniería Industrial",
+      text: "Gestiona organizaciones con visión global.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-industrial.avif",
+    },
+  ];
+
+  const maestrias = [
+    {
+      title: "Maestría en Ingeniería Electrónica",
+      text: "Transforma la educación con herramientas digitales.",
+      modalidad: "En línea" as const,
+      turno: "Flexible",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-electronica.jpg",
+    },
+    {
+      title: "Maestría en Administración",
+      text: "Lleva tu carrera profesional al siguiente nivel.",
+      modalidad: "Presencial" as const,
+      turno: "Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/maestria-admin.jpg",
+    },
+    {
+      title: "Maestría en Sistemas Computacionales",
+      text: "Especialízate en el ámbito jurídico empresarial.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino / Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-sist-computacionales.png",
+    },
+    {
+      title: "Maestría en Sistemas Computacionales",
+      text: "Especialízate en el ámbito jurídico empresarial.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino / Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-sist-computacionales.png",
+    },
+    {
+      title: "Maestría en Sistemas Computacionales",
+      text: "Especialízate en el ámbito jurídico empresarial.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino / Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-sist-computacionales.png",
+    },
+    {
+      title: "Maestría en Sistemas Computacionales",
+      text: "Especialízate en el ámbito jurídico empresarial.",
+      modalidad: "Presencial" as const,
+      turno: "Matutino / Vespertino",
+      unidades: ["Tomatlán", "Zapopan", "Puerto Vallarta"],
+      image: "/assets/resources/ing-sist-computacionales.png",
+    },
+  ];
 
   return (
     <div>
-      <Box sx={{ position: "relative", width: "100%" }}>
-        <Image
-          src="/assets/school.jpg"
-          alt="Imagen principal"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: "100%", height: "90vh", objectFit: "cover" }}
-        />
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        />
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            px: 3,
-            color: "white",
-          }}
-        >
-          <Container maxWidth="xl" disableGutters sx={{ px: 3 }}>
-            <Typography variant="h2" fontWeight="bold" mb={2}>
-              Admisiones 2026
-            </Typography>
-            <Typography variant="body1" mb={4} sx={{ maxWidth: 500 }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </Typography>
-            <Button
-              variant="contained"
-              size="large"
-              href="/admision"
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                width: "fit-content",
-                "&:hover": { backgroundColor: "grey.200" },
-              }}
-            >
-              Registrarse como Aspirante
-            </Button>
-          </Container>
-        </Box>
-      </Box>
+      <Hero
+        title="Admisiones 2026"
+        subtitle="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.."
+        image="/assets/resources/school.jpg"
+        chipLabel="Convocatoria abierta"
+        buttonText="Registrarse como Aspirante"
+        buttonHref="/admision"
+      />
 
       <Container maxWidth="xl" disableGutters sx={{ px: 3 }}>
         <Box sx={{ py: 8 }}>
@@ -97,7 +212,7 @@ export default function Page() {
           <Grid container spacing={6}>
             <Grid size={{ xs: 12, md: 4 }}>
               <InfoCard
-                icon={<HowToRegOutlinedIcon />}
+                icon={<HowToRegOutlined />}
                 title="1. Registro Online"
                 date="Octubre 1 - Noviembre 15"
                 text="Crea tu cuenta en el portal de aspirantes y sube tu documentación oficial digitalizada en formato PDF."
@@ -106,7 +221,7 @@ export default function Page() {
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <InfoCard
-                icon={<FactCheckOutlinedIcon />}
+                icon={<FactCheckOutlined />}
                 title="2. Examen de Admisión."
                 date="Noviembre 20 - Diciembre 5"
                 text="Realiza el examen de admisión en línea desde cualquier dispositivo en la fecha asignada."
@@ -115,7 +230,7 @@ export default function Page() {
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <InfoCard
-                icon={<CampaignOutlinedIcon />}
+                icon={<CampaignOutlined />}
                 title="3. Resultados."
                 date="Enero 10 - Febrero 1"
                 text="Una vez aceptado, completa tu inscripción y prepárate para iniciar tu vida universitaria."
@@ -140,194 +255,80 @@ export default function Page() {
             Conoce todos los programas educativos que tenemos disponibles para
             ti.
           </Typography>
+          <CategoryTabs activeTab={activeTab} onChange={setActiveTab} />
 
-          <Box sx={{ mb: 6 }}>
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              mb={3}
-              sx={{ display: "flex", alignItems: "center", gap: 1 }}
-            >
-              <SchoolOutlinedIcon />
-              Carreras presenciales
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Licenciatura en Gastronomía"
-                  text="Forma parte de la nueva generación de profesionales de la salud."
-                  modalidad="Presencial"
-                  turno="Matutino / Vespertino"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "presencial-0"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "presencial-0" : null)
-                  }
-                />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Arquitectura"
-                  text="Defiende la justicia y el estado de derecho."
-                  modalidad="Presencial"
-                  turno="Matutino"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "presencial-1"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "presencial-1" : null)
-                  }
-                />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Licenciatura en Administración"
-                  text="Diseña los espacios del futuro."
-                  modalidad="Presencial"
-                  turno="Matutino"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "presencial-2"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "presencial-2" : null)
-                  }
-                />
-              </Grid>
-            </Grid>
-          </Box>
+          {(activeTab === "Todos" || activeTab === "Presenciales") && (
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                mb={3}
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <SchoolOutlined />
+                Carreras presenciales
+              </Typography>
+              <CarreraCarousel cards={carrerasPresenciales} />
+            </Box>
+          )}
 
-          <Box sx={{ mb: 6 }}>
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              mb={3}
-              sx={{ display: "flex", alignItems: "center", gap: 1 }}
-            >
-              <ComputerOutlinedIcon />
-              Carreras en línea
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Ingeniería en Software"
-                  text="Desarrolla soluciones tecnológicas de vanguardia.Desarrolla soluciones tecnológicas de vanguardia.Desarrolla soluciones tecnológicas de vanguardia."
-                  modalidad="En línea"
-                  turno="Flexible"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "linea-0"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "linea-0" : null)
-                  }
-                />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Diseño Digital"
-                  text="Crea experiencias visuales para el mundo digital."
-                  modalidad="En línea"
-                  turno="Flexible"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "linea-1"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "linea-1" : null)
-                  }
-                />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Administración de Empresas"
-                  text="Gestiona organizaciones con visión global.Gestiona organizaciones con visión global.Gestiona organizaciones "
-                  modalidad="En línea"
-                  turno="Flexible"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "linea-2"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "linea-2" : null)
-                  }
-                />
-              </Grid>
-            </Grid>
-          </Box>
+          {(activeTab === "Todos" || activeTab === "En Línea") && (
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                mb={3}
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <ComputerOutlined />
+                Carreras en línea
+              </Typography>
+              <CarreraCarousel cards={carrerasEnLinea} />
+            </Box>
+          )}
 
-          <Box sx={{ mb: 6 }}>
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              mb={3}
-              sx={{ display: "flex", alignItems: "center", gap: 1 }}
-            >
-              <WorkspacePremiumOutlinedIcon />
-              Maestrías
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Maestría en Tecnología Educativa"
-                  text="Transforma la educación con herramientas digitales."
-                  modalidad="En línea"
-                  turno="Flexible"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "maestria-0"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "maestria-0" : null)
-                  }
-                />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Maestría en Administración"
-                  text="Lleva tu carrera profesional al siguiente nivel."
-                  modalidad="Presencial"
-                  turno="Vespertino"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "maestria-1"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "maestria-1" : null)
-                  }
-                />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <CarreraCard
-                  title="Maestría en Derecho Corporativooo"
-                  text="Especialízate en el ámbito jurídico empresarial. Especialízate en el ámbito jurídico empresarial.
-                  Especialízate en el ámbito jurídico empresarial."
-                  modalidad="Presencial"
-                  turno="Vespertino"
-                  unidades={["Unidad 1", "Unidad 2", "Unidad 3"]}
-                  expanded={openCard === "maestria-2"}
-                  onExpandChange={(_, isExpanded) =>
-                    setOpenCard(isExpanded ? "maestria-2" : null)
-                  }
-                />
-              </Grid>
-            </Grid>
+          {(activeTab === "Todos" || activeTab === "Maestrías") && (
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                mb={3}
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <WorkspacePremiumOutlined />
+                Maestrías
+              </Typography>
+              <CarreraCarousel cards={maestrias} />
 
-            <PreguntasCard
-              title="Preguntas sobre nuestras carreras"
-              faqs={[
-                {
-                  question: "¿PUEDO CAMBIAR DE CARRERA UNA VEZ INSCRITO?",
-                  answer:
-                    "Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.",
-                },
-                {
-                  question:
-                    "¿LAS CARRERAS EN LÍNEA TIENEN EL MISMO VALOR QUE LAS PRESENCIALES?",
-                  answer:
-                    "Sí, todos nuestros programas están reconocidos oficialmente y tienen el mismo valor curricular.",
-                },
-                {
-                  question:
-                    "¿QUÉ REQUISITOS NECESITO PARA INSCRIBIRME A UNA MAESTRÍA?",
-                  answer:
-                    "Se requiere título de licenciatura, carta de motivos, y en algunos casos examen de admisión específico.",
-                },
-                {
-                  question: "¿LAS MAESTRÍAS TIENEN BECA?",
-                  answer:
-                    "Contamos con programas de beca parcial y total según perfil socioeconómico y rendimiento académico.",
-                },
-              ]}
-            />
-          </Box>
+              <PreguntasCard
+                title="Preguntas sobre nuestras carreras"
+                faqs={[
+                  {
+                    question: "¿PUEDO CAMBIAR DE CARRERA UNA VEZ INSCRITO?",
+                    answer:
+                      "Sí, existe un proceso de cambio de carrera sujeto a disponibilidad de lugares y requisitos académicos.",
+                  },
+                  {
+                    question:
+                      "¿LAS CARRERAS EN LÍNEA TIENEN EL MISMO VALOR QUE LAS PRESENCIALES?",
+                    answer:
+                      "Sí, todos nuestros programas están reconocidos oficialmente y tienen el mismo valor curricular.",
+                  },
+                  {
+                    question:
+                      "¿QUÉ REQUISITOS NECESITO PARA INSCRIBIRME A UNA MAESTRÍA?",
+                    answer:
+                      "Se requiere título de licenciatura, carta de motivos, y en algunos casos examen de admisión específico.",
+                  },
+                  {
+                    question: "¿LAS MAESTRÍAS TIENEN BECA?",
+                    answer:
+                      "Contamos con programas de beca parcial y total según perfil socioeconómico y rendimiento académico.",
+                  },
+                ]}
+              />
+            </Box>
+          )}
         </Box>
 
         <Box sx={{ py: 8, pt: 2 }}>
@@ -347,7 +348,7 @@ export default function Page() {
           <Grid container spacing={6}>
             <Grid size={{ xs: 12, md: 4 }}>
               <InfoCard
-                icon={<LocalPhoneOutlinedIcon />}
+                icon={<LocalPhoneOutlined />}
                 title="Llámanos"
                 text="Atención telefónica de lunes a viernes de 9:00 a 18:00 hrs."
                 actionLabel="+52 (55) 1234-5678"
@@ -357,7 +358,7 @@ export default function Page() {
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <InfoCard
-                icon={<WhatsAppIcon />}
+                icon={<WhatsApp />}
                 title="WhatsApp"
                 text="Envíanos un mensaje rápido para respuestas instantáneas."
                 actionLabel="Chatear ahora"
@@ -367,7 +368,7 @@ export default function Page() {
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <InfoCard
-                icon={<EmailOutlinedIcon />}
+                icon={<EmailOutlined />}
                 title="Email"
                 text="Escríbenos para dudas detalladas sobre planes de estudio."
                 actionLabel="admisiones@universidad.edu"
